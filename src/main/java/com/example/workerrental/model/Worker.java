@@ -12,5 +12,4 @@ public class Worker {
     private String address;
     private String gender;
     private String identityNumber;
-
 }
