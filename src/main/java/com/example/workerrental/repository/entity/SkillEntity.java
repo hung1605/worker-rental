@@ -1,62 +1,44 @@
 package com.example.workerrental.repository.entity;
 
-
 import jakarta.persistence.*;
+import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
-
+@Data
 @Entity
-@Table(name = "tblSkill")
+@Table(name = "skill")
 public class SkillEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private int id;
     @Column(name = "name")
     private String name;
-
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "skillEntity", fetch = FetchType.LAZY)
-    private List<WorkerSkillEntity> workerSkillEntities =new ArrayList<>();
+    public SkillEntity() {
+    }
 
-
-
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public SkillEntity setId(Long id) {
+    public void setId(int id) {
         this.id = id;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public SkillEntity setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public SkillEntity setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
-        return this;
-    }
-
-    public List<WorkerSkillEntity> getWorkerSkillEntities() {
-        return workerSkillEntities;
-    }
-
-    public SkillEntity setWorkerSkillEntities(List<WorkerSkillEntity> workerSkillEntities) {
-        this.workerSkillEntities = workerSkillEntities;
-        return this;
     }
 }

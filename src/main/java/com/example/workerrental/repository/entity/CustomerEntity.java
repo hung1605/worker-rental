@@ -1,11 +1,13 @@
 package com.example.workerrental.repository.entity;
 
+import com.example.workerrental.model.CustomerDTO;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-@Data
+
 @Entity
 @Table(name = "customer")
+@AllArgsConstructor
 public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,4 +21,54 @@ public class CustomerEntity {
     @Column(name = "address")
     private String address;
 
+    public CustomerEntity() {
+
+    }
+
+    public CustomerEntity(CustomerDTO customerDTO) {
+        this.name = customerDTO.getName();
+        this.phoneNumber = customerDTO.getPhoneNumber();
+        this.email = customerDTO.getEmail();
+        this.address = customerDTO.getAddress();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }
