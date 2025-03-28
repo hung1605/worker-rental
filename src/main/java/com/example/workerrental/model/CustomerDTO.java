@@ -1,29 +1,33 @@
 package com.example.workerrental.model;
 
+import com.example.workerrental.repository.entity.CustomerEntity;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-public class Customer {
-    private int id;
+@NoArgsConstructor
+public class CustomerDTO {
     private String name;
     private String phoneNumber;
     private String email;
     private String address;
 
-    public Customer(int id, String name, String phoneNumber, String email, String address) {
-        this.id = id;
+    public CustomerDTO() {
+
+    }
+
+    public CustomerDTO(String name, String phoneNumber, String email, String address) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public CustomerDTO(CustomerEntity customerEntity) {
+        this.name = customerEntity.getName();
+        this.phoneNumber = customerEntity.getPhoneNumber();
+        this.email = customerEntity.getEmail();
+        this.address = customerEntity.getAddress();
     }
 
     public String getName() {

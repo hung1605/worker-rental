@@ -1,5 +1,6 @@
 package com.example.workerrental.repository.entity;
 
+import com.example.workerrental.model.CustomerDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
@@ -19,7 +20,7 @@ public class WorkerEntity {
     @Column(name = "phoneNumber")
     private String phoneNumber;
     @Column(name = "email")
-    private Email email;
+    private String email;
     @Column(name = "dob")
     private Date dob;
     @Column(name = "address")
@@ -31,6 +32,6 @@ public class WorkerEntity {
     @Column(name = "status")
     private String status;
 
-    @OneToMany(mappedBy = "worker", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "workerEntity", cascade = CascadeType.ALL)
     private List<SkillWorkerEntity> skillWorkerEntityList;
 }

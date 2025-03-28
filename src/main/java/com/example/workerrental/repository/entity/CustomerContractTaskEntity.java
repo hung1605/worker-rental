@@ -10,9 +10,9 @@ public class CustomerContractTaskEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = "numberOfWorker")
     private int numberOfWorker;
+
 
     @ManyToOne
     @JoinColumn(name = "task_id", referencedColumnName = "id")

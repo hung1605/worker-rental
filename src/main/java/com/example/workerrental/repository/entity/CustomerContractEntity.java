@@ -31,7 +31,7 @@ public class CustomerContractEntity {
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private CustomerEntity customerEntity;
 
-    @OneToMany(mappedBy = "customer_contract_task", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customerContractEntity", cascade = CascadeType.ALL)
     private List<CustomerContractTaskEntity> contractTaskEntityList;
 
 

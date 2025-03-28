@@ -1,49 +1,36 @@
-package com.example.workerrental.repository.entity;
+package com.example.workerrental.model;
 
-import com.example.workerrental.model.TaskDTO;
+import com.example.workerrental.repository.entity.SkillEntity;
+import com.example.workerrental.repository.entity.TaskEntity;
 import jakarta.persistence.*;
-import lombok.Data;
 
-@Entity
-@Data
-@Table(name = "task")
-public class TaskEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "name")
+public class TaskDTO {
     private String name;
-    @Column(name = "description")
     private String description;
-    @Column(name = "salary")
     private Double salary;
-    @Column(name = "unit")
     private String unit;
-    @Column(name = "state")
     private boolean state;
-
-    @OneToOne
-    @JoinColumn(name = "skill_id", referencedColumnName = "id")
     private SkillEntity skillEntity;
 
-    public TaskEntity() {
+    public TaskDTO() {
     }
 
-    public TaskEntity(TaskDTO taskDTO) {
-        this.name = taskDTO.getName();
-        this.description = taskDTO.getDescription();
-        this.salary = taskDTO.getSalary();
-        this.unit = taskDTO.getUnit();
-        this.state = taskDTO.isState();
-        this.skillEntity = taskDTO.getSkillEntity();
+    public TaskDTO(String name, String description, Double salary, String unit, boolean state, SkillEntity skillEntity) {
+        this.name = name;
+        this.description = description;
+        this.salary = salary;
+        this.unit = unit;
+        this.state = state;
+        this.skillEntity = skillEntity;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public TaskDTO(TaskEntity taskEntity) {
+        this.name = taskEntity.getName();
+        this.description = taskEntity.getDescription();
+        this.salary = taskEntity.getSalary();
+        this.unit = taskEntity.getUnit();
+        this.state = taskEntity.isState();
+        this.skillEntity = taskEntity.getSkillEntity();
     }
 
     public String getName() {
