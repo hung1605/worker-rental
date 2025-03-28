@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "customer_contract")
+@Table(name = "tblCustomerContract")
 public class CustomerContractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
