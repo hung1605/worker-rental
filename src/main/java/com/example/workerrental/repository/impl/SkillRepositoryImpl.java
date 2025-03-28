@@ -16,7 +16,7 @@ public class SkillRepositoryImpl implements SkillRepositoryCustom {
 
     @Override
     public SkillEntity findOneByName(String name) {
-        String sql = "SELECT * FROM tbl_skill as s WHERE s.name = '" + name + "'";
+        String sql = "SELECT * FROM skill as s WHERE s.name = '" + name + "'";
         Query query =entityManager.createNativeQuery(sql, SkillEntity.class);
         System.out.println(query.getSingleResult());
         return (SkillEntity) query.getSingleResult();
