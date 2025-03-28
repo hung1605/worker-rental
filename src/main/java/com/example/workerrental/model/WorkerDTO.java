@@ -2,23 +2,21 @@ package com.example.workerrental.model;
 
 import jakarta.validation.constraints.Email;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class WorkerDTO {
     private String name;
-    private String phoneNumber;
+    private String phone;
     private String email;
-    private Date dayOfbirth;
+    private Date dayOfBirth;
     private String address;
     private String gender;
-    private String identityNumber;
+    private String identityCard;
+    private String bankAccount;
+
     private int status;
     private List<WorkerSkillDTO> workerSkillDTOList;
-    public WorkerDTO() {
-    }
-
-
 
     public String getName() {
         return name;
@@ -29,12 +27,12 @@ public class WorkerDTO {
         return this;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public WorkerDTO setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public WorkerDTO setPhone(String phone) {
+        this.phone = phone;
         return this;
     }
 
@@ -47,17 +45,12 @@ public class WorkerDTO {
         return this;
     }
 
-    public WorkerDTO setStatus(int status) {
-        this.status = status;
-        return this;
+    public Date getDayOfBirth() {
+        return dayOfBirth;
     }
 
-    public Date getDayOfbirth() {
-        return dayOfbirth;
-    }
-
-    public WorkerDTO setDayOfbirth(Date dayOfbirth) {
-        this.dayOfbirth = dayOfbirth;
+    public WorkerDTO setDayOfBirth(Date dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
         return this;
     }
 
@@ -79,15 +72,32 @@ public class WorkerDTO {
         return this;
     }
 
-    public String getIdentityNumber() {
-        return identityNumber;
+    public String getIdentityCard() {
+        return identityCard;
     }
 
-    public WorkerDTO setIdentityNumber(String identityNumber) {
-        this.identityNumber = identityNumber;
+    public WorkerDTO setIdentityCard(String identityCard) {
+        this.identityCard = identityCard;
         return this;
     }
 
+    public String getBankAccount() {
+        return bankAccount;
+    }
+
+    public WorkerDTO setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
+        return this;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public WorkerDTO setStatus(int status) {
+        this.status = status;
+        return this;
+    }
 
     public List<WorkerSkillDTO> getWorkerSkillDTOList() {
         return workerSkillDTOList;

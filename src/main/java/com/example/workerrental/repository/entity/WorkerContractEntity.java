@@ -23,13 +23,7 @@ public class WorkerContractEntity {
     @JoinColumn(name = "workerId")
     private WorkerEntity workerEntity;
 
-    public WorkerContractEntity(Long id, Date startDate, Date endDate, String terms, WorkerEntity workerEntity) {
-        this.id = id;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.terms = terms;
-        this.workerEntity = workerEntity;
-    }
+
 
     public Long getId() {
         return id;

@@ -20,6 +20,8 @@ public class WorkerEntity {
     private String phone;
     @Column(name = "email")
     private String email;
+    @Column(name = "address")
+    private String address;
 
     @Column(name = "dayOfBirth")
     private Date dayOfBirth;
@@ -32,25 +34,13 @@ public class WorkerEntity {
     @Column(name = "status")
     private int status;
 
-    @OneToMany(mappedBy = "workerEntity", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "workerEntity",cascade =  CascadeType.ALL ,fetch = FetchType.LAZY)
     private List<WorkerSkillEntity> workerSkillEntities = new ArrayList<>();
 
     @OneToOne(mappedBy = "workerEntity", fetch = FetchType.LAZY)
     private WorkerContractEntity workerContractEntity;
 
-    public WorkerEntity(Long id, String name, String phone, String email, Date dayOfBirth, String gender, String identityCard, String bankAccount, int status, List<WorkerSkillEntity> workerSkillEntities, WorkerContractEntity workerContractEntity) {
-        this.id = id;
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.dayOfBirth = dayOfBirth;
-        this.gender = gender;
-        this.identityCard = identityCard;
-        this.bankAccount = bankAccount;
-        this.status = status;
-        this.workerSkillEntities = workerSkillEntities;
-        this.workerContractEntity = workerContractEntity;
-    }
+
 
     public Long getId() {
         return id;
@@ -148,6 +138,15 @@ public class WorkerEntity {
 
     public WorkerEntity setWorkerContractEntity(WorkerContractEntity workerContractEntity) {
         this.workerContractEntity = workerContractEntity;
+        return this;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public WorkerEntity setAddress(String address) {
+        this.address = address;
         return this;
     }
 }

@@ -22,12 +22,7 @@ public class SkillEntity {
     @OneToMany(mappedBy = "skillEntity", fetch = FetchType.LAZY)
     private List<WorkerSkillEntity> workerSkillEntities =new ArrayList<>();
 
-    public SkillEntity(Long id, String name, String description, List<WorkerSkillEntity> workerSkillEntities) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.workerSkillEntities = workerSkillEntities;
-    }
+
 
     public Long getId() {
         return id;

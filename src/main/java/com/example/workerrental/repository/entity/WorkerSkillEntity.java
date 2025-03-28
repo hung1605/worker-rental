@@ -24,13 +24,7 @@ public class WorkerSkillEntity {
     @JoinColumn(name = "workerId")
     private WorkerEntity workerEntity;
 
-    public WorkerSkillEntity(Long id, Float yearsOfExperience, String certificate, SkillEntity skillEntity, WorkerEntity workerEntity) {
-        this.id = id;
-        this.yearsOfExperience = yearsOfExperience;
-        this.certificate = certificate;
-        this.skillEntity = skillEntity;
-        this.workerEntity = workerEntity;
-    }
+
 
     public Long getId() {
         return id;

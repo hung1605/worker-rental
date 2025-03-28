@@ -16,7 +16,7 @@ public class WorkerConverter {
         return result;
     }
 
-    public WorkerEntity copverterToEntity(WorkerDTO dto){
+    public WorkerEntity converterToEntity(WorkerDTO dto){
         WorkerEntity result = modelMapper.map(dto, WorkerEntity.class);
         return result;
     }
