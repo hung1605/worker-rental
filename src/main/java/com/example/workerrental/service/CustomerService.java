@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CustomerService {
-    CustomerDTO getCustomerById(Integer id);
+    CustomerDTO getCustomerById(Long id);
     List<CustomerDTO> getAllCustomers();
     CustomerDTO createCustomer(CustomerDTO customerDTO);
-    CustomerDTO updateCustomer(Integer id, CustomerDTO customerDTO);
-    Boolean deleteCustomer(Integer id);
+    CustomerDTO updateCustomer(Long id, CustomerDTO customerDTO);
+    Boolean deleteCustomer(Long id);
 }

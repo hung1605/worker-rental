@@ -16,11 +16,11 @@ public class TaskAPI {
     private TaskServiceImpl taskServiceImpl;
 
     @GetMapping("/api/task")
-    public ResponseEntity<TaskDTO> getTaskById(@RequestParam(name = "id") Integer id) {
+    public ResponseEntity<TaskDTO> getTaskById(@RequestParam(name = "id") Long id) {
         return ResponseEntity.ok(taskServiceImpl.getTaskById(id));
     }
 
-    @GetMapping("/api/task")
+    @GetMapping("/api/tasks")
     public ResponseEntity<List<TaskDTO>> getAllTasks() {
         return ResponseEntity.ok(taskServiceImpl.getAllTasks());
     }
@@ -31,11 +31,11 @@ public class TaskAPI {
     }
 
     @PutMapping("/api/task")
-    public ResponseEntity<TaskDTO> updateTask(@RequestParam Integer id, @RequestBody TaskDTO taskDTO) {
+    public ResponseEntity<TaskDTO> updateTask(@RequestParam Long id, @RequestBody TaskDTO taskDTO) {
         return ResponseEntity.ok(taskServiceImpl.updateTask(id, taskDTO));
     }
     @DeleteMapping("/api/task")
-    public ResponseEntity<Boolean> deleteTask(@RequestParam Integer id) {
+    public ResponseEntity<Boolean> deleteTask(@RequestParam Long id) {
         return ResponseEntity.ok(taskServiceImpl.deleteTask(id));
     }
 }

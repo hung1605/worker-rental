@@ -14,12 +14,10 @@ public class WorkerSkillConverter {
     private ModelMapper modelMapper;
 
     public WorkerSkillDTO convertToDTO(WorkerSkillEntity entity){
-        WorkerSkillDTO result = modelMapper.map(entity, WorkerSkillDTO.class);
-        return result;
+        return modelMapper.map(entity, WorkerSkillDTO.class);
     }
 
     public WorkerSkillEntity converterToEntity(WorkerSkillDTO dto){
-        WorkerSkillEntity result = modelMapper.map(dto, WorkerSkillEntity.class);
-        return result;
+        return modelMapper.map(dto, WorkerSkillEntity.class);
     }
 }

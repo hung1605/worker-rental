@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "tblWorkerContract")
+@Table(name = "tbl_worker_contract")
 public class WorkerContractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +20,8 @@ public class WorkerContractEntity {
     private String terms;
 
     @OneToOne
-    @JoinColumn(name = "workerId")
+    @JoinColumn(name = "worker_id")
     private WorkerEntity workerEntity;
-
-
 
     public Long getId() {
         return id;

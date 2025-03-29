@@ -8,7 +8,7 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "tblWorker")
+@Table(name = "tbl_worker")
 public class WorkerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,9 @@ public class WorkerEntity {
     @Column(name = "status")
     private int status;
 
-    @OneToMany(mappedBy = "workerEntity",cascade =  CascadeType.ALL ,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "workerEntity",
+            cascade =  CascadeType.ALL ,
+            fetch = FetchType.LAZY)
     private List<WorkerSkillEntity> workerSkillEntities = new ArrayList<>();
 
     @OneToOne(mappedBy = "workerEntity", fetch = FetchType.LAZY)

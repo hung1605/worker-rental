@@ -20,7 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
 
     @Override
-    public CustomerDTO getCustomerById(Integer id) {
+    public CustomerDTO getCustomerById(Long id) {
         // Lấy đối tượng CustomerEntity từ DB theo id
         Optional<CustomerEntity> optionalCustomer = customerRepository.findById(id);
         if(optionalCustomer.isPresent()){
@@ -53,7 +53,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO updateCustomer(Integer id, CustomerDTO customerDTO) {
+    public CustomerDTO updateCustomer(Long id, CustomerDTO customerDTO) {
         Optional<CustomerEntity> optionalCustomer = customerRepository.findById(id);
         if (optionalCustomer.isPresent()) {
             CustomerEntity customerEntity = optionalCustomer.get();
@@ -71,7 +71,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Boolean deleteCustomer(Integer id) {
+    public Boolean deleteCustomer(Long id) {
         Optional<CustomerEntity> optionalCustomer = customerRepository.findById(id);
         if (optionalCustomer.isPresent()) {
             // Xóa customer

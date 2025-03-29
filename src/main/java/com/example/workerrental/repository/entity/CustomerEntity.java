@@ -4,14 +4,16 @@ import com.example.workerrental.model.CustomerDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Entity
-@Table(name = "customer")
+@Table(name = "tbl_customer")
 @AllArgsConstructor
 public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "phoneNumber")
@@ -20,6 +22,12 @@ public class CustomerEntity {
     private String email;
     @Column(name = "address")
     private String address;
+
+    @OneToMany(mappedBy = "customerEntity",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private List<CustomerContractEntity>  customerContractEntityList;
+
 
     public CustomerEntity() {
 
@@ -32,11 +40,11 @@ public class CustomerEntity {
         this.address = customerDTO.getAddress();
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

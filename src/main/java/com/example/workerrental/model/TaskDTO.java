@@ -1,36 +1,28 @@
 package com.example.workerrental.model;
 
-import com.example.workerrental.repository.entity.SkillEntity;
-import com.example.workerrental.repository.entity.TaskEntity;
-import jakarta.persistence.*;
-
 public class TaskDTO {
     private String name;
     private String description;
     private Double salary;
     private String unit;
-    private boolean state;
-    private SkillEntity skillEntity;
+    private int status;
+    private SkillDTO skillEntity;
 
     public TaskDTO() {
     }
 
-    public TaskDTO(String name, String description, Double salary, String unit, boolean state, SkillEntity skillEntity) {
+    public TaskDTO(String name,
+                   String description,
+                   Double salary,
+                   String unit,
+                   int status,
+                   SkillDTO skillEntity) {
         this.name = name;
         this.description = description;
         this.salary = salary;
         this.unit = unit;
-        this.state = state;
+        this.status = status;
         this.skillEntity = skillEntity;
-    }
-
-    public TaskDTO(TaskEntity taskEntity) {
-        this.name = taskEntity.getName();
-        this.description = taskEntity.getDescription();
-        this.salary = taskEntity.getSalary();
-        this.unit = taskEntity.getUnit();
-        this.state = taskEntity.isState();
-        this.skillEntity = taskEntity.getSkillEntity();
     }
 
     public String getName() {
@@ -65,19 +57,19 @@ public class TaskDTO {
         this.unit = unit;
     }
 
-    public boolean isState() {
-        return state;
+    public int getStatus() {
+        return status;
     }
 
-    public void setState(boolean state) {
-        this.state = state;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public SkillEntity getSkillEntity() {
+    public SkillDTO getSkillEntity() {
         return skillEntity;
     }
 
-    public void setSkillEntity(SkillEntity skillEntity) {
+    public void setSkillEntity(SkillDTO skillEntity) {
         this.skillEntity = skillEntity;
     }
 }

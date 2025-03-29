@@ -4,7 +4,7 @@ package com.example.workerrental.repository.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tblWorkerSkill")
+@Table(name = "tbl_worker_skill")
 public class WorkerSkillEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,11 +17,11 @@ public class WorkerSkillEntity {
     private String certificate;
 
     @ManyToOne
-    @JoinColumn(name = "skillId")
+    @JoinColumn(name = "skill_id")
     private SkillEntity skillEntity;
 
     @ManyToOne
-    @JoinColumn(name = "workerId")
+    @JoinColumn(name = "worker_id")
     private WorkerEntity workerEntity;
 
 

@@ -15,7 +15,7 @@ public class WorkerAPI {
     private WorkerService workerService;
 
 
-    @PostMapping("/worker/add")
+    @PostMapping("/api/worker")
     public ResponseEntity<WorkerDTO> addWorker(@RequestBody WorkerDTO newWorker){
        return ResponseEntity.ok(workerService.add(newWorker));
     }

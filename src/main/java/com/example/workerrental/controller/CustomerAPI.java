@@ -1,6 +1,7 @@
 package com.example.workerrental.controller;
 
 import com.example.workerrental.model.CustomerDTO;
+import com.example.workerrental.repository.entity.ContractDetailEntity;
 import com.example.workerrental.service.impl.CustomerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +15,12 @@ public class CustomerAPI {
     private CustomerServiceImpl customerServiceImpl;
 
     @GetMapping("/api/customer")
-    public ResponseEntity<CustomerDTO>  getCustomerById(@RequestParam(name = "id") Integer id) {
+    public ResponseEntity<CustomerDTO>  getCustomerById(@RequestParam(name = "id") Long id) {
         return ResponseEntity.ok(customerServiceImpl.getCustomerById(id));
     }
 
     @GetMapping("/api/customers")
-    public ResponseEntity<List<CustomerDTO>>  getCustomers() {
+    public ResponseEntity<List<CustomerDTO>>  getAllCustomers() {
         return ResponseEntity.ok(customerServiceImpl.getAllCustomers());
     }
 
@@ -29,11 +30,11 @@ public class CustomerAPI {
     }
 
     @PutMapping("/api/customer")
-    public ResponseEntity<CustomerDTO> updateCustomer(@RequestParam Integer id, @RequestBody CustomerDTO customerDTO) {
+    public ResponseEntity<CustomerDTO> updateCustomer(@RequestParam Long id, @RequestBody CustomerDTO customerDTO) {
         return ResponseEntity.ok(customerServiceImpl.updateCustomer(id, customerDTO));
     }
     @DeleteMapping("/api/customer")
-    public ResponseEntity<Boolean> deleteCustomer(@RequestParam Integer id) {
+    public ResponseEntity<Boolean> deleteCustomer(@RequestParam Long id) {
         return ResponseEntity.ok(customerServiceImpl.deleteCustomer(id));
     }
 }

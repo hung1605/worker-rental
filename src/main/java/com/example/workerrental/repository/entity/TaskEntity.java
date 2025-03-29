@@ -2,15 +2,13 @@ package com.example.workerrental.repository.entity;
 
 import com.example.workerrental.model.TaskDTO;
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
-@Data
-@Table(name = "task")
+@Table(name = "tbl_task")
 public class TaskEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "description")
@@ -19,30 +17,18 @@ public class TaskEntity {
     private Double salary;
     @Column(name = "unit")
     private String unit;
-    @Column(name = "state")
-    private boolean state;
+    @Column(name = "status")
+    private int status;
 
-    @OneToOne
-    @JoinColumn(name = "skill_id", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "skill_id")
     private SkillEntity skillEntity;
 
-    public TaskEntity() {
-    }
-
-    public TaskEntity(TaskDTO taskDTO) {
-        this.name = taskDTO.getName();
-        this.description = taskDTO.getDescription();
-        this.salary = taskDTO.getSalary();
-        this.unit = taskDTO.getUnit();
-        this.state = taskDTO.isState();
-        this.skillEntity = taskDTO.getSkillEntity();
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -78,12 +64,12 @@ public class TaskEntity {
         this.unit = unit;
     }
 
-    public boolean isState() {
-        return state;
+    public int isStatus() {
+        return status;
     }
 
-    public void setState(boolean state) {
-        this.state = state;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public SkillEntity getSkillEntity() {
