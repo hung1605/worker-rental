@@ -1,7 +1,6 @@
 package com.example.workerrental.service;
 
-import com.example.workerrental.model.CustomerDTO;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.workerrental.dto.CustomerDTO;
 
 import java.util.List;
 

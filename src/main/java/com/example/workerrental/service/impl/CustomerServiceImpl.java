@@ -1,6 +1,7 @@
 package com.example.workerrental.service.impl;
 
-import com.example.workerrental.model.CustomerDTO;
+import com.example.workerrental.converter.CustomerConverter;
+import com.example.workerrental.dto.CustomerDTO;
 import com.example.workerrental.repository.CustomerRepository;
 import com.example.workerrental.repository.entity.CustomerEntity;
 import com.example.workerrental.service.CustomerService;
@@ -18,6 +19,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private CustomerConverter customerConverter;
 
     @Override
     public CustomerDTO getCustomerById(Long id) {
@@ -26,7 +29,7 @@ public class CustomerServiceImpl implements CustomerService {
         if(optionalCustomer.isPresent()){
             CustomerEntity customerEntity = optionalCustomer.get();
             // Chuyển đổi từ entity sang DTO (giả sử có phương thức convertToDTO)
-            return new CustomerDTO(customerEntity);
+            return customerConverter.convertToDTO(customerEntity);
         }
         // Nếu không tìm thấy khách hàng, có thể ném exception hoặc xử lý theo yêu cầu
         throw new RuntimeException("Customer not found with id: " + id);
@@ -38,18 +41,18 @@ public class CustomerServiceImpl implements CustomerService {
         List<CustomerEntity> customerEntities = customerRepository.findAll();
         // Chuyển đổi từng entity thành DTO
         return customerEntities.stream()
-                .map(CustomerDTO::new)
-                .collect(Collectors.toList());
+                .map(customerEntity ->  customerConverter.convertToDTO(customerEntity))
+                .toList();
     }
 
     @Override
     public CustomerDTO createCustomer(CustomerDTO customerDTO) {
         // Chuyển đổi DTO thành Entity
-        CustomerEntity entity = new CustomerEntity(customerDTO);
+        CustomerEntity entity = customerConverter.converterToEntity(customerDTO);
         // Lưu entity vào DB
         CustomerEntity savedEntity = customerRepository.save(entity);
         // Chuyển đổi entity đã lưu thành DTO và trả về
-        return new CustomerDTO(savedEntity);
+        return customerConverter.convertToDTO(savedEntity);
     }
 
     @Override
@@ -64,7 +67,7 @@ public class CustomerServiceImpl implements CustomerService {
             CustomerEntity updatedEntity = customerRepository.save(customerEntity);
 
             // Trả về DTO của customer đã được cập nhật
-            return new CustomerDTO(updatedEntity);
+            return customerConverter.convertToDTO(updatedEntity);
         } else {
             throw new RuntimeException("Customer not found with id: " + id);
         }

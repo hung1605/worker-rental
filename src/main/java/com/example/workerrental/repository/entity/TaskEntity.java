@@ -1,6 +1,5 @@
 package com.example.workerrental.repository.entity;
 
-import com.example.workerrental.model.TaskDTO;
 import jakarta.persistence.*;
 
 @Entity

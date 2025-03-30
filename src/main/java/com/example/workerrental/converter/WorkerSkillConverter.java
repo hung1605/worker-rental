@@ -1,8 +1,6 @@
 package com.example.workerrental.converter;
 
-import com.example.workerrental.model.WorkerDTO;
-import com.example.workerrental.model.WorkerSkillDTO;
-import com.example.workerrental.repository.entity.WorkerEntity;
+import com.example.workerrental.dto.WorkerSkillDTO;
 import com.example.workerrental.repository.entity.WorkerSkillEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

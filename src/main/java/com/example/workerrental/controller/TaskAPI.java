@@ -1,8 +1,6 @@
 package com.example.workerrental.controller;
 
-import com.example.workerrental.model.CustomerDTO;
-import com.example.workerrental.model.TaskDTO;
-import com.example.workerrental.service.impl.CustomerServiceImpl;
+import com.example.workerrental.dto.TaskDTO;
 import com.example.workerrental.service.impl.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

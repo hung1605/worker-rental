@@ -3,7 +3,7 @@ package com.example.workerrental.service.impl;
 
 import com.example.workerrental.converter.SkillConverter;
 import com.example.workerrental.converter.TaskConverter;
-import com.example.workerrental.model.TaskDTO;
+import com.example.workerrental.dto.TaskDTO;
 import com.example.workerrental.repository.SkillRepository;
 import com.example.workerrental.repository.TaskRepository;
 import com.example.workerrental.repository.entity.SkillEntity;
@@ -74,13 +74,13 @@ public class TaskServiceImpl implements TaskService {
         }
 
         TaskEntity oldTaskEntity = optionalTask.get();
-// Kiểm tra nếu SkillEntity có sẵn trong DB, nếu không, ném exception
+        // Kiểm tra nếu SkillEntity có sẵn trong DB, nếu không, ném exception
         Optional<SkillEntity> optionalSkill = skillRepository.findByName(taskDTO.getSkillEntity().getName());
         if (optionalSkill.isEmpty()) {
             throw new RuntimeException("Skill not found with name: " + taskDTO.getSkillEntity().getName());
         }
 
-// Cập nhật các trường trong Entity từ DTO
+        // Cập nhật các trường trong Entity từ DTO
         oldTaskEntity = taskConverter.converterToEntity(taskDTO);
         oldTaskEntity.setId(id);
         oldTaskEntity.setSkillEntity(optionalSkill.get());// Gán lại skillEntity đã cập nhật

@@ -1,4 +1,4 @@
-package com.example.workerrental.model;
+package com.example.workerrental.dto;
 
 public class WorkerSkillDTO {
     private Float yearsOfExperience;

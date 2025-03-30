@@ -1,6 +1,6 @@
 package com.example.workerrental.repository.entity;
 
-import com.example.workerrental.model.CustomerDTO;
+import com.example.workerrental.dto.CustomerDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,17 +28,6 @@ public class CustomerEntity {
             fetch = FetchType.LAZY)
     private List<CustomerContractEntity>  customerContractEntityList;
 
-
-    public CustomerEntity() {
-
-    }
-
-    public CustomerEntity(CustomerDTO customerDTO) {
-        this.name = customerDTO.getName();
-        this.phoneNumber = customerDTO.getPhoneNumber();
-        this.email = customerDTO.getEmail();
-        this.address = customerDTO.getAddress();
-    }
 
     public Long getId() {
         return id;

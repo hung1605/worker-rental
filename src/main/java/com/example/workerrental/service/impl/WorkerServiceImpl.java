@@ -2,9 +2,8 @@ package com.example.workerrental.service.impl;
 
 import com.example.workerrental.converter.WorkerConverter;
 import com.example.workerrental.converter.WorkerSkillConverter;
-import com.example.workerrental.model.WorkerDTO;
-import com.example.workerrental.model.WorkerSkillDTO;
-import com.example.workerrental.repository.SkillRepository;
+import com.example.workerrental.dto.WorkerDTO;
+import com.example.workerrental.dto.WorkerSkillDTO;
 import com.example.workerrental.repository.SkillRepositoryCustom;
 import com.example.workerrental.repository.WorkerRepository;
 import com.example.workerrental.repository.entity.SkillEntity;

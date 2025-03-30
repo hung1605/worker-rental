@@ -1,6 +1,4 @@
-package com.example.workerrental.model;
-
-import jakarta.validation.constraints.Email;
+package com.example.workerrental.dto;
 
 import java.sql.Date;
 import java.util.List;

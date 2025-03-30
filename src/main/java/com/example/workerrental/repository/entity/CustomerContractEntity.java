@@ -26,13 +26,12 @@ public class CustomerContractEntity {
     @Column(name = "status")
     private int status;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "customer_id")
     private CustomerEntity customerEntity;
 
     @OneToMany(mappedBy = "customerContractEntity",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+            cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CustomerContractTaskEntity> contractTaskEntityList;
 
     public Long getId() {

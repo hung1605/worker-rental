@@ -1,4 +1,4 @@
-package com.example.workerrental.model;
+package com.example.workerrental.dto;
 
 import com.example.workerrental.repository.entity.CustomerEntity;
 import lombok.Data;
@@ -11,24 +11,6 @@ public class CustomerDTO {
     private String phoneNumber;
     private String email;
     private String address;
-
-    public CustomerDTO() {
-
-    }
-
-    public CustomerDTO(String name, String phoneNumber, String email, String address) {
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address = address;
-    }
-
-    public CustomerDTO(CustomerEntity customerEntity) {
-        this.name = customerEntity.getName();
-        this.phoneNumber = customerEntity.getPhoneNumber();
-        this.email = customerEntity.getEmail();
-        this.address = customerEntity.getAddress();
-    }
 
     public String getName() {
         return name;

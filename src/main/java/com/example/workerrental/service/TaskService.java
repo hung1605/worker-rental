@@ -1,6 +1,6 @@
 package com.example.workerrental.service;
 
-import com.example.workerrental.model.TaskDTO;
+import com.example.workerrental.dto.TaskDTO;
 
 import java.util.List;
 
