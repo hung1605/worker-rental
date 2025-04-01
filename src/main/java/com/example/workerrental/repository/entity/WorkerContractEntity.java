@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "tbl_worker_contract")
+@Table(name = "tblWorkerContract")
 public class WorkerContractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,51 +20,49 @@ public class WorkerContractEntity {
     private String terms;
 
     @OneToOne
-    @JoinColumn(name = "worker_id")
+    @JoinColumn(name = "workerId")
     private WorkerEntity workerEntity;
+
+    public WorkerContractEntity() {
+    }
 
     public Long getId() {
         return id;
     }
 
-    public WorkerContractEntity setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public Date getStartDate() {
         return startDate;
     }
 
-    public WorkerContractEntity setStartDate(Date startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
-        return this;
     }
 
     public Date getEndDate() {
         return endDate;
     }
 
-    public WorkerContractEntity setEndDate(Date endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
-        return this;
     }
 
     public String getTerms() {
         return terms;
     }
 
-    public WorkerContractEntity setTerms(String terms) {
+    public void setTerms(String terms) {
         this.terms = terms;
-        return this;
     }
 
     public WorkerEntity getWorkerEntity() {
         return workerEntity;
     }
 
-    public WorkerContractEntity setWorkerEntity(WorkerEntity workerEntity) {
+    public void setWorkerEntity(WorkerEntity workerEntity) {
         this.workerEntity = workerEntity;
-        return this;
     }
 }

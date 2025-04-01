@@ -9,17 +9,15 @@ public class SkillDTO {
         return name;
     }
 
-    public SkillDTO setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public SkillDTO setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
-        return this;
     }
 }

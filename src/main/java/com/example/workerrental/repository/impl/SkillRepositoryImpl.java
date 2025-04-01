@@ -1,7 +1,6 @@
 package com.example.workerrental.repository.impl;
 
-import com.example.workerrental.repository.SkillRepository;
-import com.example.workerrental.repository.SkillRepositoryCustom;
+import com.example.workerrental.repository.custom.SkillRepositoryCustom;
 import com.example.workerrental.repository.entity.SkillEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -13,12 +12,11 @@ public class SkillRepositoryImpl implements SkillRepositoryCustom {
     @PersistenceContext
     private EntityManager entityManager;
 
-
+    //Sử dụng hàm này khi chưa biết id của SkillEntity
     @Override
     public SkillEntity findOneByName(String name) {
-        String sql = "SELECT * FROM skill as s WHERE s.name = '" + name + "'";
+        String sql = "SELECT * FROM tblSkill as s WHERE s.name = '" + name + "'";
         Query query =entityManager.createNativeQuery(sql, SkillEntity.class);
-        System.out.println(query.getSingleResult());
         return (SkillEntity) query.getSingleResult();
     }
 }

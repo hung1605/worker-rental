@@ -4,7 +4,7 @@ package com.example.workerrental.repository.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tbl_worker_skill")
+@Table(name = "tblWorkerSkill")
 public class WorkerSkillEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,58 +16,54 @@ public class WorkerSkillEntity {
     @Column(name = "certificate")
     private String certificate;
 
-    @ManyToOne
-    @JoinColumn(name = "skill_id")
-    private SkillEntity skillEntity;
+    @ManyToOne()
+    @JoinColumn(name = "skillId")
+    private SkillEntity skill;
 
-    @ManyToOne
-    @JoinColumn(name = "worker_id")
+    @ManyToOne()
+    @JoinColumn(name = "workerId")
     private WorkerEntity workerEntity;
 
-
+    public WorkerSkillEntity() {
+    }
 
     public Long getId() {
         return id;
     }
 
-    public WorkerSkillEntity setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public Float getYearsOfExperience() {
         return yearsOfExperience;
     }
 
-    public WorkerSkillEntity setYearsOfExperience(Float yearsOfExperience) {
+    public void setYearsOfExperience(Float yearsOfExperience) {
         this.yearsOfExperience = yearsOfExperience;
-        return this;
     }
 
     public String getCertificate() {
         return certificate;
     }
 
-    public WorkerSkillEntity setCertificate(String certificate) {
+    public void setCertificate(String certificate) {
         this.certificate = certificate;
-        return this;
     }
 
-    public SkillEntity getSkillEntity() {
-        return skillEntity;
+    public SkillEntity getSkill() {
+        return skill;
     }
 
-    public WorkerSkillEntity setSkillEntity(SkillEntity skillEntity) {
-        this.skillEntity = skillEntity;
-        return this;
+    public void setSkill(SkillEntity skill) {
+        this.skill = skill;
     }
 
     public WorkerEntity getWorkerEntity() {
         return workerEntity;
     }
 
-    public WorkerSkillEntity setWorkerEntity(WorkerEntity workerEntity) {
+    public void setWorkerEntity(WorkerEntity workerEntity) {
         this.workerEntity = workerEntity;
-        return this;
     }
 }
