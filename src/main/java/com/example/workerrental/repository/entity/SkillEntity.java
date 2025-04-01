@@ -19,44 +19,41 @@ public class SkillEntity {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "skillEntity", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "skill", fetch = FetchType.LAZY)
     private List<WorkerSkillEntity> workerSkillEntities =new ArrayList<>();
 
-
+    public SkillEntity() {
+    }
 
     public Long getId() {
         return id;
     }
 
-    public SkillEntity setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public SkillEntity setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public SkillEntity setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
-        return this;
     }
 
     public List<WorkerSkillEntity> getWorkerSkillEntities() {
         return workerSkillEntities;
     }
 
-    public SkillEntity setWorkerSkillEntities(List<WorkerSkillEntity> workerSkillEntities) {
+    public void setWorkerSkillEntities(List<WorkerSkillEntity> workerSkillEntities) {
         this.workerSkillEntities = workerSkillEntities;
-        return this;
     }
 }

@@ -3,33 +3,29 @@ package com.example.workerrental.model;
 public class WorkerSkillDTO {
     private Float yearsOfExperience;
     private String certificate;
-    private SkillDTO skillDTO;
-
+    private SkillDTO skill;
 
     public Float getYearsOfExperience() {
         return yearsOfExperience;
     }
 
-    public WorkerSkillDTO setYearsOfExperience(Float yearsOfExperience) {
+    public void setYearsOfExperience(Float yearsOfExperience) {
         this.yearsOfExperience = yearsOfExperience;
-        return this;
     }
 
     public String getCertificate() {
         return certificate;
     }
 
-    public WorkerSkillDTO setCertificate(String certificate) {
+    public void setCertificate(String certificate) {
         this.certificate = certificate;
-        return this;
     }
 
-    public SkillDTO getSkillDTO() {
-        return skillDTO;
+    public SkillDTO getSkill() {
+        return skill;
     }
 
-    public WorkerSkillDTO setSkillDTO(SkillDTO skillDTO) {
-        this.skillDTO = skillDTO;
-        return this;
+    public void setSkill(SkillDTO skill) {
+        this.skill = skill;
     }
 }
