@@ -1,13 +1,13 @@
 package com.example.workerrental.service;
 
-import com.example.workerrental.dto.TaskDTO;
+import com.example.workerrental.repository.entity.Task;
 
 import java.util.List;
 
 public interface TaskService {
-    TaskDTO getTaskById(Long id);
-    List<TaskDTO> getAllTasks();
-    TaskDTO createTask(TaskDTO taskDTO);
-    TaskDTO updateTask(Long id, TaskDTO taskDTO);
+    Task getTaskById(Long id);
+    List<Task> getAllTasks();
+    Task createTask(Task task);
+    Task updateTask(Long id, Task task);
     Boolean deleteTask(Long id);
 }

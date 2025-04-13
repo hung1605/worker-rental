@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tbl_task")
-public class TaskEntity {
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,7 +21,7 @@ public class TaskEntity {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "skill_id")
-    private SkillEntity skillEntity;
+    private Skill skill;
 
     public Long getId() {
         return id;
@@ -71,11 +71,11 @@ public class TaskEntity {
         this.status = status;
     }
 
-    public SkillEntity getSkillEntity() {
-        return skillEntity;
+    public Skill getSkillEntity() {
+        return skill;
     }
 
-    public void setSkillEntity(SkillEntity skillEntity) {
-        this.skillEntity = skillEntity;
+    public void setSkillEntity(Skill skill) {
+        this.skill = skill;
     }
 }

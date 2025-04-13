@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tblSkill")
-public class SkillEntity {
+public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,9 +20,9 @@ public class SkillEntity {
     private String description;
 
     @OneToMany(mappedBy = "skill", fetch = FetchType.LAZY)
-    private List<WorkerSkillEntity> workerSkillEntities =new ArrayList<>();
+    private List<WorkerSkill> workerSkills =new ArrayList<>();
 
-    public SkillEntity() {
+    public Skill() {
     }
 
     public Long getId() {
@@ -49,11 +49,11 @@ public class SkillEntity {
         this.description = description;
     }
 
-    public List<WorkerSkillEntity> getWorkerSkillEntities() {
-        return workerSkillEntities;
+    public List<WorkerSkill> getWorkerSkills() {
+        return workerSkills;
     }
 
-    public void setWorkerSkillEntities(List<WorkerSkillEntity> workerSkillEntities) {
-        this.workerSkillEntities = workerSkillEntities;
+    public void setWorkerSkills(List<WorkerSkill> workerSkills) {
+        this.workerSkills = workerSkills;
     }
 }

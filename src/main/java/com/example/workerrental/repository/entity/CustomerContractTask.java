@@ -1,11 +1,10 @@
 package com.example.workerrental.repository.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
 @Table(name = "tbl_customer_contract_task")
-public class CustomerContractTaskEntity {
+public class CustomerContractTask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,11 +15,11 @@ public class CustomerContractTaskEntity {
 
     @ManyToOne
     @JoinColumn(name = "task_id")
-    private TaskEntity taskEntity;
+    private Task task;
 
     @ManyToOne
     @JoinColumn(name = "customer_contract_id")
-    private CustomerContractEntity customerContractEntity;
+    private CustomerContract customerContract;
 
     public Long getId() {
         return id;
@@ -46,19 +45,19 @@ public class CustomerContractTaskEntity {
         this.taskCost = taskCost;
     }
 
-    public TaskEntity getTaskEntity() {
-        return taskEntity;
+    public Task getTaskEntity() {
+        return task;
     }
 
-    public void setTaskEntity(TaskEntity taskEntity) {
-        this.taskEntity = taskEntity;
+    public void setTaskEntity(Task task) {
+        this.task = task;
     }
 
-    public CustomerContractEntity getCustomerContractEntity() {
-        return customerContractEntity;
+    public CustomerContract getCustomerContractEntity() {
+        return customerContract;
     }
 
-    public void setCustomerContractEntity(CustomerContractEntity customerContractEntity) {
-        this.customerContractEntity = customerContractEntity;
+    public void setCustomerContractEntity(CustomerContract customerContract) {
+        this.customerContract = customerContract;
     }
 }

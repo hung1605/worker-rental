@@ -3,20 +3,16 @@ package com.example.workerrental.service.impl;
 import com.example.workerrental.builder.WorkerSearchBuilder;
 import com.example.workerrental.converter.WorkerConverter;
 import com.example.workerrental.converter.WorkerSearchBuilderConverter;
-import com.example.workerrental.converter.WorkerSkillConverter;
 import com.example.workerrental.dto.WorkerDTO;
 import com.example.workerrental.dto.WorkerSkillDTO;
-import com.example.workerrental.repository.SkillRepository;
 import com.example.workerrental.repository.WorkerSkillRepository;
 import com.example.workerrental.repository.custom.SkillRepositoryCustom;
 import com.example.workerrental.repository.WorkerRepository;
 import com.example.workerrental.repository.custom.WorkerRepositoryCustom;
-import com.example.workerrental.repository.custom.WorkerSkillRepositoryCustom;
-import com.example.workerrental.repository.entity.SkillEntity;
-import com.example.workerrental.repository.entity.WorkerEntity;
-import com.example.workerrental.repository.entity.WorkerSkillEntity;
+import com.example.workerrental.repository.entity.Skill;
+import com.example.workerrental.repository.entity.Worker;
+import com.example.workerrental.repository.entity.WorkerSkill;
 import com.example.workerrental.service.WorkerService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,9 +41,9 @@ public class WorkerServiceImpl implements WorkerService {
     @Override
     public List<WorkerDTO> searchWorker(Map<String, String> field, List<String> skillId) {
         WorkerSearchBuilder workerSearchBuilder = workerSearchBuilderConverter.toWorkerSearchBuilder(field, skillId);
-        List<WorkerEntity> workerEntityList = workerRepositoryCustom.searchWorker(workerSearchBuilder) ;
+        List<Worker> workerList = workerRepositoryCustom.searchWorker(workerSearchBuilder) ;
         List<WorkerDTO> result =new ArrayList<>();
-        for(WorkerEntity it:workerEntityList){
+        for(Worker it: workerList){
             WorkerDTO workerDTO = workerConverter.convertToDTO(it);
             result.add(workerDTO);
         }
@@ -62,8 +58,8 @@ public class WorkerServiceImpl implements WorkerService {
     @Override
     public List<WorkerDTO> getWorkers() {
         List<WorkerDTO> result = new ArrayList<>();
-        List<WorkerEntity> workerEntityList = workerRepository.findAll();
-        for(WorkerEntity it:workerEntityList){
+        List<Worker> workerList = workerRepository.findAll();
+        for(Worker it: workerList){
             //Kiểm tra Worker còn tồn tại hay chưa
             if(it.getStatus()==1){
                 result.add(workerConverter.convertToDTO(it));
@@ -75,66 +71,66 @@ public class WorkerServiceImpl implements WorkerService {
     @Override
     @Transactional
     public WorkerDTO addWorker(WorkerDTO workerDTO) {
-        WorkerEntity workerEntity = workerConverter.converterToEntity(workerDTO);
-        workerEntity.setStatus(1);
-        List<WorkerSkillEntity> workerSkillEntityList = new ArrayList<>();
+        Worker worker = workerConverter.converterToEntity(workerDTO);
+        worker.setStatus(1);
+        List<WorkerSkill> workerSkillList = new ArrayList<>();
 
-        for(WorkerSkillEntity it: workerEntity.getWorkerSkills()){
-            SkillEntity skillEntity = skillRepositoryCustom.findOneByName(it.getSkill().getName());
-            it.setSkill(skillEntity);
-            it.setWorkerEntity(workerEntity);
-            workerSkillEntityList.add(it);
+        for(WorkerSkill it: worker.getWorkerSkills()){
+            Skill skill = skillRepositoryCustom.findOneByName(it.getSkill().getName());
+            it.setSkill(skill);
+            it.setWorkerEntity(worker);
+            workerSkillList.add(it);
         }
 
-        workerEntity.setWorkerSkills(workerSkillEntityList);
-        return workerConverter.convertToDTO(workerRepository.save(workerEntity));
+        worker.setWorkerSkills(workerSkillList);
+        return workerConverter.convertToDTO(workerRepository.save(worker));
     }
 
     @Override
     @Transactional
     public WorkerDTO updateWorker(Long id, WorkerDTO workerDTO) {
-        WorkerEntity oldWorkerEntity = workerRepository.findById(id).get();
-        oldWorkerEntity.setName(workerDTO.getName());
-        oldWorkerEntity.setPhone(workerDTO.getPhone());
-        oldWorkerEntity.setEmail(workerDTO.getEmail());
-        oldWorkerEntity.setDayOfBirth(workerDTO.getDayOfBirth());
-        oldWorkerEntity.setAddress(workerDTO.getAddress());
-        oldWorkerEntity.setGender(workerDTO.getGender());
-        oldWorkerEntity.setIdentityCard(workerDTO.getIdentityCard());
+        Worker oldWorker = workerRepository.findById(id).get();
+        oldWorker.setName(workerDTO.getName());
+        oldWorker.setPhone(workerDTO.getPhone());
+        oldWorker.setEmail(workerDTO.getEmail());
+        oldWorker.setDayOfBirth(workerDTO.getDayOfBirth());
+        oldWorker.setAddress(workerDTO.getAddress());
+        oldWorker.setGender(workerDTO.getGender());
+        oldWorker.setIdentityCard(workerDTO.getIdentityCard());
 
         // Cập nhật danh sách kỹ năng
-        List<WorkerSkillEntity> updatedworkerSkill = new ArrayList<>();
+        List<WorkerSkill> updatedworkerSkill = new ArrayList<>();
         for (WorkerSkillDTO workerSkillDTO : workerDTO.getWorkerSkills()) {
-            SkillEntity skillEntity = skillRepositoryCustom.findOneByName(workerSkillDTO.getSkill().getName());
+            Skill skill = skillRepositoryCustom.findOneByName(workerSkillDTO.getSkill().getName());
 
             // Tìm kỹ năng đã tồn tại của worker này
-            WorkerSkillEntity workerSkillEntity = workerSkillRepository.findByWorkerEntityAndSkill(oldWorkerEntity, skillEntity);
+            WorkerSkill workerSkill = workerSkillRepository.findByWorkerAndSkill(oldWorker, skill);
 
-            if(workerSkillEntity == null){
-                workerSkillEntity = new WorkerSkillEntity();
+            if(workerSkill == null){
+                workerSkill = new WorkerSkill();
             }
 
-            workerSkillEntity.setYearsOfExperience(workerSkillDTO.getYearsOfExperience());
-            workerSkillEntity.setCertificate(workerSkillDTO.getCertificate());
+            workerSkill.setYearsOfExperience(workerSkillDTO.getYearsOfExperience());
+            workerSkill.setCertificate(workerSkillDTO.getCertificate());
 
-            workerSkillEntity.setSkill(skillEntity);
-            workerSkillEntity.setWorkerEntity(oldWorkerEntity);
+            workerSkill.setSkill(skill);
+            workerSkill.setWorkerEntity(oldWorker);
 
-            updatedworkerSkill.add(workerSkillEntity);
+            updatedworkerSkill.add(workerSkill);
         }
 
         // Gán danh sách đã cập nhật vào oldWorkerEntity
-        oldWorkerEntity.setWorkerSkills(updatedworkerSkill);
+        oldWorker.setWorkerSkills(updatedworkerSkill);
 
         // Lưu WorkerEntity (nó sẽ tự động cập nhật WorkerSkillEntity nếu dùng CascadeType.ALL)
-        return workerConverter.convertToDTO(workerRepository.save(oldWorkerEntity));
+        return workerConverter.convertToDTO(workerRepository.save(oldWorker));
 
     }
 
     @Override
     public void deleteWorker(Long id) {
-        WorkerEntity workerEntity = workerRepository.findById(id).get();
-        workerEntity.setStatus(0);
-        workerRepository.save(workerEntity);
+        Worker worker = workerRepository.findById(id).get();
+        worker.setStatus(0);
+        workerRepository.save(worker);
     }
 }

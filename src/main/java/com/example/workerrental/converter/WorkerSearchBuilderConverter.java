@@ -1,7 +1,7 @@
 package com.example.workerrental.converter;
 
 import com.example.workerrental.builder.WorkerSearchBuilder;
-import com.example.workerrental.model.WorkerDTO;
+import com.example.workerrental.dto.WorkerDTO;
 import com.example.workerrental.utils.MapUtil;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
 package com.example.workerrental.repository.custom;
 
-import com.example.workerrental.repository.entity.SkillEntity;
+import com.example.workerrental.repository.entity.Skill;
 
 public interface SkillRepositoryCustom {
-    SkillEntity findOneByName(String name);
+    Skill findOneByName(String name);
 }

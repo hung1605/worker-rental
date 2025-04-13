@@ -1,8 +1,8 @@
 package com.example.workerrental.repository;
 
-import com.example.workerrental.repository.entity.CustomerContractTaskEntity;
+import com.example.workerrental.repository.entity.CustomerContractTask;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CustomerContractTaskRepository
-        extends JpaRepository<CustomerContractTaskEntity, Long> {
+        extends JpaRepository<CustomerContractTask, Long> {
 }

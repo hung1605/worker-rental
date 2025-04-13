@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tblWorkerSkill")
-public class WorkerSkillEntity {
+public class WorkerSkill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,13 +18,13 @@ public class WorkerSkillEntity {
 
     @ManyToOne()
     @JoinColumn(name = "skillId")
-    private SkillEntity skill;
+    private Skill skill;
 
     @ManyToOne()
     @JoinColumn(name = "workerId")
-    private WorkerEntity workerEntity;
+    private Worker worker;
 
-    public WorkerSkillEntity() {
+    public WorkerSkill() {
     }
 
     public Long getId() {
@@ -51,19 +51,19 @@ public class WorkerSkillEntity {
         this.certificate = certificate;
     }
 
-    public SkillEntity getSkill() {
+    public Skill getSkill() {
         return skill;
     }
 
-    public void setSkill(SkillEntity skill) {
+    public void setSkill(Skill skill) {
         this.skill = skill;
     }
 
-    public WorkerEntity getWorkerEntity() {
-        return workerEntity;
+    public Worker getWorkerEntity() {
+        return worker;
     }
 
-    public void setWorkerEntity(WorkerEntity workerEntity) {
-        this.workerEntity = workerEntity;
+    public void setWorkerEntity(Worker worker) {
+        this.worker = worker;
     }
 }

@@ -2,9 +2,7 @@ package com.example.workerrental.repository.impl;
 
 import com.example.workerrental.builder.WorkerSearchBuilder;
 import com.example.workerrental.repository.custom.WorkerRepositoryCustom;
-import com.example.workerrental.repository.entity.SkillEntity;
-import com.example.workerrental.repository.entity.WorkerEntity;
-import com.example.workerrental.repository.entity.WorkerSkillEntity;
+import com.example.workerrental.repository.entity.Worker;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -88,15 +86,15 @@ public class WorkerRepositoryImpl implements WorkerRepositoryCustom{
     }
 
     @Override
-    public List<WorkerEntity> searchWorker(WorkerSearchBuilder workerSearchBuilder) {
+    public List<Worker> searchWorker(WorkerSearchBuilder workerSearchBuilder) {
         StringBuilder sql = new StringBuilder("SELECT w.* FROM tblworker w");
         StringBuilder where = new StringBuilder(" WHERE w.status = 1 ");
         joinTable(workerSearchBuilder, sql);
         querryNormal(workerSearchBuilder, where);
         querrySpecial(workerSearchBuilder, where);
         sql.append(where);
-        Query query = entityManager.createNativeQuery(sql.toString(), WorkerEntity.class);
-        List<WorkerEntity> result = query.getResultList();
+        Query query = entityManager.createNativeQuery(sql.toString(), Worker.class);
+        List<Worker> result = query.getResultList();
         return result;
     }
 }

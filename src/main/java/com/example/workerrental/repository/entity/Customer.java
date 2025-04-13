@@ -1,6 +1,5 @@
 package com.example.workerrental.repository.entity;
 
-import com.example.workerrental.dto.CustomerDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,7 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "tbl_customer")
 @AllArgsConstructor
-public class CustomerEntity {
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,10 +22,10 @@ public class CustomerEntity {
     @Column(name = "address")
     private String address;
 
-    @OneToMany(mappedBy = "customerEntity",
+    @OneToMany(mappedBy = "customer",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
-    private List<CustomerContractEntity>  customerContractEntityList;
+    private List<CustomerContract> customerContractList;
 
 
     public Long getId() {
@@ -67,5 +66,13 @@ public class CustomerEntity {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<CustomerContract> getCustomerContractList() {
+        return customerContractList;
+    }
+
+    public void setCustomerContractList(List<CustomerContract> customerContractList) {
+        this.customerContractList = customerContractList;
     }
 }

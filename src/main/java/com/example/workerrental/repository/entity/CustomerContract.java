@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tbl_customer_contract")
-public class CustomerContractEntity {
+public class CustomerContract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,11 +28,11 @@ public class CustomerContractEntity {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "customer_id")
-    private CustomerEntity customerEntity;
+    private Customer customer;
 
-    @OneToMany(mappedBy = "customerContractEntity",
+    @OneToMany(mappedBy = "customerContract",
             cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CustomerContractTaskEntity> contractTaskEntityList;
+    private List<CustomerContractTask> contractTaskList;
 
     public Long getId() {
         return id;
@@ -90,19 +90,19 @@ public class CustomerContractEntity {
         this.status = status;
     }
 
-    public CustomerEntity getCustomerEntity() {
-        return customerEntity;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerEntity(CustomerEntity customerEntity) {
-        this.customerEntity = customerEntity;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public List<CustomerContractTaskEntity> getContractTaskEntityList() {
-        return contractTaskEntityList;
+    public List<CustomerContractTask> getContractTaskList() {
+        return contractTaskList;
     }
 
-    public void setContractTaskEntityList(List<CustomerContractTaskEntity> contractTaskEntityList) {
-        this.contractTaskEntityList = contractTaskEntityList;
+    public void setContractTaskList(List<CustomerContractTask> contractTaskList) {
+        this.contractTaskList = contractTaskList;
     }
 }

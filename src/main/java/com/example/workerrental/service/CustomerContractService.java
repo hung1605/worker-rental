@@ -1,8 +1,12 @@
 package com.example.workerrental.service;
 
-import com.example.workerrental.dto.CustomerContractDTO;
-import com.example.workerrental.repository.entity.CustomerContractEntity;
+import com.example.workerrental.dto.CustomerContractStatDTO;
+import com.example.workerrental.repository.entity.CustomerContract;
+
+import java.util.List;
 
 public interface CustomerContractService {
-    CustomerContractDTO createCustomerContract (CustomerContractDTO customerContractDTO);
+    CustomerContract createCustomerContract (CustomerContract customerContractDTO);
+    List<CustomerContract> getCustomerContractByCustomer(Long customerId);
+    List<CustomerContractStatDTO> getALlCustomerContract();
 }

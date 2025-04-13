@@ -1,11 +1,10 @@
 package com.example.workerrental.repository;
 
-import com.example.workerrental.repository.custom.SkillRepositoryCustom;
-import com.example.workerrental.repository.entity.SkillEntity;
+import com.example.workerrental.repository.entity.Skill;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface SkillRepository extends JpaRepository<SkillEntity, Long> {
-    Optional<SkillEntity> findByName(String name);
+public interface SkillRepository extends JpaRepository<Skill, Long> {
+    Optional<Skill> findByName(String name);
 }

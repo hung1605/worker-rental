@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tblWorker")
-public class WorkerEntity {
+public class Worker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,7 +22,6 @@ public class WorkerEntity {
     private String email;
     @Column(name = "address")
     private String address;
-
     @Column(name = "dayOfBirth")
     private Date dayOfBirth;
     @Column(name = "gender")
@@ -34,14 +33,14 @@ public class WorkerEntity {
     @Column(name = "status")
     private int status;
 
-    public WorkerEntity() {
+    public Worker() {
     }
 
-    @OneToMany(mappedBy = "workerEntity",cascade =  CascadeType.ALL ,fetch = FetchType.LAZY)
-    private List<WorkerSkillEntity> workerSkills = new ArrayList<>();
+    @OneToMany(mappedBy = "worker",cascade =  CascadeType.ALL ,fetch = FetchType.LAZY)
+    private List<WorkerSkill> workerSkills = new ArrayList<>();
 
-    @OneToOne(mappedBy = "workerEntity", fetch = FetchType.LAZY)
-    private WorkerContractEntity workerContractEntity;
+    @OneToOne(mappedBy = "worker", fetch = FetchType.LAZY)
+    private WorkerContract workerContract;
 
 
     public Long getId() {
@@ -124,19 +123,19 @@ public class WorkerEntity {
         this.status = status;
     }
 
-    public List<WorkerSkillEntity> getWorkerSkills() {
+    public List<WorkerSkill> getWorkerSkills() {
         return workerSkills;
     }
 
-    public void setWorkerSkills(List<WorkerSkillEntity> workerSkills) {
+    public void setWorkerSkills(List<WorkerSkill> workerSkills) {
         this.workerSkills = workerSkills;
     }
 
-    public WorkerContractEntity getWorkerContractEntity() {
-        return workerContractEntity;
+    public WorkerContract getWorkerContractEntity() {
+        return workerContract;
     }
 
-    public void setWorkerContractEntity(WorkerContractEntity workerContractEntity) {
-        this.workerContractEntity = workerContractEntity;
+    public void setWorkerContractEntity(WorkerContract workerContract) {
+        this.workerContract = workerContract;
     }
 }

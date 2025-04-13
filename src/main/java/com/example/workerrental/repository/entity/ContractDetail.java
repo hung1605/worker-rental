@@ -6,7 +6,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "tbl_contract_detail")
-public class ContractDetailEntity {
+public class ContractDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,15 +30,15 @@ public class ContractDetailEntity {
 
     @ManyToOne
     @JoinColumn(name = "worker_id")
-    private WorkerEntity workerEntity ;
+    private Worker worker;
 
     @ManyToOne
     @JoinColumn(name = "customer_contract_id")
-    private CustomerContractEntity customerContractEntity;
+    private CustomerContract customerContract;
 
     @ManyToOne
     @JoinColumn(name = "task_id")
-    private TaskEntity taskEntity;
+    private Task task;
 
     public Long getId() {
         return id;
@@ -112,27 +112,27 @@ public class ContractDetailEntity {
         this.wage = wage;
     }
 
-    public WorkerEntity getWorkerEntity() {
-        return workerEntity;
+    public Worker getWorkerEntity() {
+        return worker;
     }
 
-    public void setWorkerEntity(WorkerEntity workerEntity) {
-        this.workerEntity = workerEntity;
+    public void setWorkerEntity(Worker worker) {
+        this.worker = worker;
     }
 
-    public CustomerContractEntity getCustomerContractEntity() {
-        return customerContractEntity;
+    public CustomerContract getCustomerContractEntity() {
+        return customerContract;
     }
 
-    public void setCustomerContractEntity(CustomerContractEntity customerContractEntity) {
-        this.customerContractEntity = customerContractEntity;
+    public void setCustomerContractEntity(CustomerContract customerContract) {
+        this.customerContract = customerContract;
     }
 
-    public TaskEntity getTaskEntity() {
-        return taskEntity;
+    public Task getTaskEntity() {
+        return task;
     }
 
-    public void setTaskEntity(TaskEntity taskEntity) {
-        this.taskEntity = taskEntity;
+    public void setTaskEntity(Task task) {
+        this.task = task;
     }
 }

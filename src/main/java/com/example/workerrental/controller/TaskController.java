@@ -1,6 +1,6 @@
 package com.example.workerrental.controller;
 
-import com.example.workerrental.dto.TaskDTO;
+import com.example.workerrental.repository.entity.Task;
 import com.example.workerrental.service.impl.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,29 +8,30 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-public class TaskAPI {
+public class TaskController {
     @Autowired
     private TaskServiceImpl taskServiceImpl;
 
     @GetMapping("/api/task")
-    public ResponseEntity<TaskDTO> getTaskById(@RequestParam(name = "id") Long id) {
+    public ResponseEntity<Task> getTaskById(@RequestParam(name = "id") Long id) {
         return ResponseEntity.ok(taskServiceImpl.getTaskById(id));
     }
 
     @GetMapping("/api/tasks")
-    public ResponseEntity<List<TaskDTO>> getAllTasks() {
+    public ResponseEntity<List<Task>> getAllTasks() {
         return ResponseEntity.ok(taskServiceImpl.getAllTasks());
     }
 
     @PostMapping("/api/task")
-    public ResponseEntity<TaskDTO> createTask(@RequestBody TaskDTO taskDTO) {
-        return ResponseEntity.ok(taskServiceImpl.createTask(taskDTO));
+    public ResponseEntity<Task> createTask(@RequestBody Task task) {
+        return ResponseEntity.ok(taskServiceImpl.createTask(task));
     }
 
     @PutMapping("/api/task")
-    public ResponseEntity<TaskDTO> updateTask(@RequestParam Long id, @RequestBody TaskDTO taskDTO) {
-        return ResponseEntity.ok(taskServiceImpl.updateTask(id, taskDTO));
+    public ResponseEntity<Task> updateTask(@RequestParam Long id, @RequestBody Task task) {
+        return ResponseEntity.ok(taskServiceImpl.updateTask(id, task));
     }
     @DeleteMapping("/api/task")
     public ResponseEntity<Boolean> deleteTask(@RequestParam Long id) {

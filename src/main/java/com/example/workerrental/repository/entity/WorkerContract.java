@@ -6,7 +6,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "tblWorkerContract")
-public class WorkerContractEntity {
+public class WorkerContract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,9 +21,9 @@ public class WorkerContractEntity {
 
     @OneToOne
     @JoinColumn(name = "workerId")
-    private WorkerEntity workerEntity;
+    private Worker worker;
 
-    public WorkerContractEntity() {
+    public WorkerContract() {
     }
 
     public Long getId() {
@@ -58,11 +58,11 @@ public class WorkerContractEntity {
         this.terms = terms;
     }
 
-    public WorkerEntity getWorkerEntity() {
-        return workerEntity;
+    public Worker getWorkerEntity() {
+        return worker;
     }
 
-    public void setWorkerEntity(WorkerEntity workerEntity) {
-        this.workerEntity = workerEntity;
+    public void setWorkerEntity(Worker worker) {
+        this.worker = worker;
     }
 }

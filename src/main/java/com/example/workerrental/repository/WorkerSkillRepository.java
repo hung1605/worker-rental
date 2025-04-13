@@ -1,10 +1,10 @@
 package com.example.workerrental.repository;
 
-import com.example.workerrental.repository.entity.SkillEntity;
-import com.example.workerrental.repository.entity.WorkerEntity;
-import com.example.workerrental.repository.entity.WorkerSkillEntity;
+import com.example.workerrental.repository.entity.Skill;
+import com.example.workerrental.repository.entity.Worker;
+import com.example.workerrental.repository.entity.WorkerSkill;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface WorkerSkillRepository extends JpaRepository<WorkerSkillEntity, Long>{
-    WorkerSkillEntity findByWorkerEntityAndSkill(WorkerEntity worker, SkillEntity skill);
+public interface WorkerSkillRepository extends JpaRepository<WorkerSkill, Long>{
+    WorkerSkill findByWorkerAndSkill (Worker worker, Skill skill);
 }
